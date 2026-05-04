@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // detect scroll
+  // detect scroll blur navbar
   useEffect(() => {
 
     const handleScroll = () => {
@@ -22,6 +23,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
 
   }, []);
+
 
   return (
 
@@ -41,31 +43,15 @@ export default function Navbar() {
 
             {/* LOGO */}
 
-            <a href="#" className="flex items-center gap-2 group outline-none">
+            <a href="#" className="flex items-center gap-2 group">
 
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
 
-                <svg xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-code-xml w-5 h-5"
-                >
-
-                  <path d="m18 16 4-4-4-4"></path>
-                  <path d="m6 8-4 4 4 4"></path>
-                  <path d="m14.5 4-5 16"></path>
-
-                </svg>
+                {"</>"}
 
               </div>
 
-              <span className="font-display font-bold text-xl tracking-tight text-slate-900 group-hover:text-primary transition-colors">
+              <span className="font-display font-bold text-xl tracking-tight text-slate-900">
 
                 Kali Krishna
 
@@ -74,46 +60,27 @@ export default function Navbar() {
             </a>
 
 
-            {/* MENU */}
+            {/* DESKTOP MENU */}
 
             <div className="hidden md:flex items-center gap-8">
 
               <div className="flex items-center gap-6">
 
-                <a href="#about" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
-                  About
-                </a>
-
-                <a href="#skills" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
-                  Skills
-                </a>
-
-                <a href="#projects" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
-                  Projects
-                </a>
-
-                <a href="#experience" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
-                  Experience
-                </a>
-
-                <a href="#contact" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
-                  Contact
-                </a>
+                <a href="#about" className="nav-link">About</a>
+                <a href="#skills" className="nav-link">Skills</a>
+                <a href="#projects" className="nav-link">Projects</a>
+                <a href="#experience" className="nav-link">Experience</a>
+                <a href="#contact" className="nav-link">Contact</a>
 
               </div>
-
-
-              {/* CONNECT BUTTON */}
 
               <a
                 href="https://www.linkedin.com/in/kali-krishna027/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 rounded-full text-sm font-semibold bg-primary text-white hover:bg-blue-700 hover:shadow-md transition-all duration-300"
+                className="px-6 py-2.5 rounded-full text-sm font-semibold bg-primary text-white hover:bg-blue-700 transition"
               >
-
                 Let's Connect
-
               </a>
 
             </div>
@@ -122,32 +89,81 @@ export default function Navbar() {
             {/* MOBILE MENU BUTTON */}
 
             <button
-              className="md:hidden p-2 rounded-lg bg-secondary text-slate-700 hover:bg-secondary/80 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden p-2 rounded-lg bg-secondary text-slate-700"
             >
 
-              <svg xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-menu w-6 h-6"
-              >
-
-                <path d="M4 5h16"></path>
-                <path d="M4 12h16"></path>
-                <path d="M4 19h16"></path>
-
-              </svg>
+              {menuOpen ? "✕" : "☰"}
 
             </button>
 
           </div>
 
         </div>
+
+
+        {/* MOBILE DROPDOWN MENU */}
+
+        {menuOpen && (
+
+          <div className="md:hidden bg-white/90 backdrop-blur-lg shadow-lg border-t">
+
+            <div className="flex flex-col px-6 py-4 gap-4">
+
+              <a
+                href="#about"
+                onClick={() => setMenuOpen(false)}
+                className="mobile-link"
+              >
+                About
+              </a>
+
+              <a
+                href="#skills"
+                onClick={() => setMenuOpen(false)}
+                className="mobile-link"
+              >
+                Skills
+              </a>
+
+              <a
+                href="#projects"
+                onClick={() => setMenuOpen(false)}
+                className="mobile-link"
+              >
+                Projects
+              </a>
+
+              <a
+                href="#experience"
+                onClick={() => setMenuOpen(false)}
+                className="mobile-link"
+              >
+                Experience
+              </a>
+
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="mobile-link"
+              >
+                Contact
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/kali-krishna027/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 px-5 py-2 rounded-full bg-primary text-white text-center"
+              >
+                Let's Connect
+              </a>
+
+            </div>
+
+          </div>
+
+        )}
 
       </nav>
 

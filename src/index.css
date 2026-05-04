@@ -34,3 +34,11 @@
     @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-purple-500/50;
   }
 }
+
+.nav-link {
+  @apply text-sm font-medium text-slate-600 hover:text-primary transition;
+}
+
+.mobile-link {
+  @apply text-base font-medium text-slate-700 hover:text-primary;
+}
