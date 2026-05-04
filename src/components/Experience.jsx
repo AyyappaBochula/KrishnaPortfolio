@@ -4,7 +4,7 @@ import klocLogo from "../assets/kloc.jpeg";
 import wyreflowLogo from "../assets/wyerflow.jpeg";
 import prodigyLogo from "../assets/prodigy.jpeg";
 import edunetLogo from "../assets/edunet.jpeg";
-import anuLogo from "../assets/anu.jpeg";
+import anuLogo from "../assets/ANU.jpeg";
 import andhraLogo from "../assets/andhra.jpeg";
 
 const experienceData = [
